@@ -1,0 +1,60 @@
+---
+import AppStoreBadge from './AppStoreBadge.astro';
+---
+
+<section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-pin-500 via-pin-400 to-emoji-400 dark:from-gray-950 dark:via-pin-950 dark:to-gray-950">
+  <!-- Decorative floating emoji -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
+    <span class="absolute text-4xl opacity-20 top-[15%] left-[10%] animate-float" style="animation-delay: 0s;">😎</span>
+    <span class="absolute text-3xl opacity-15 top-[25%] right-[15%] animate-float" style="animation-delay: 1s;">🔥</span>
+    <span class="absolute text-5xl opacity-10 bottom-[20%] left-[20%] animate-float" style="animation-delay: 2s;">🎉</span>
+    <span class="absolute text-3xl opacity-15 top-[60%] right-[10%] animate-float" style="animation-delay: 3s;">📍</span>
+    <span class="absolute text-4xl opacity-10 bottom-[30%] right-[30%] animate-float" style="animation-delay: 4s;">✨</span>
+    <span class="absolute text-3xl opacity-20 top-[40%] left-[5%] animate-float" style="animation-delay: 5s;">🏆</span>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto px-4 pt-24 pb-16 grid md:grid-cols-2 gap-12 items-center">
+    <!-- Text content -->
+    <div class="text-center md:text-left">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 dark:bg-white/10 text-white text-sm font-medium mb-6 backdrop-blur-sm">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+        Now on the App Store
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+        Drop your emoji.<br />
+        <span class="text-emoji-200">Own the map.</span>
+      </h1>
+
+      <p class="text-lg text-white/80 mb-8 max-w-lg mx-auto md:mx-0">
+        Pin expressive emoji statuses to real-world locations. See what's happening nearby. Climb the leaderboard.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+        <AppStoreBadge />
+        <a href="#features" class="text-sm font-medium text-white/90 hover:text-white underline underline-offset-4 transition-colors">
+          Learn more &darr;
+        </a>
+      </div>
+    </div>
+
+    <!-- App icon -->
+    <div class="flex justify-center">
+      <div class="relative">
+        <img
+          src="/PinmojiApp.jpg"
+          alt="Pinmoji App Icon"
+          class="w-56 h-56 sm:w-72 sm:h-72 rounded-[3rem] shadow-2xl animate-float"
+        />
+        <div class="absolute -inset-4 rounded-[3.5rem] bg-white/10 dark:bg-white/5 -z-10 blur-xl"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave divider -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+      <path d="M0 100V60C240 20 480 0 720 20C960 40 1200 80 1440 60V100H0Z" class="fill-white dark:fill-gray-950" />
+    </svg>
+  </div>
+</section>

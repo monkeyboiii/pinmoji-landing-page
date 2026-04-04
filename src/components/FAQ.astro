@@ -1,0 +1,70 @@
+---
+const items = [
+  {
+    q: 'What is Pinmoji?',
+    a: 'Pinmoji is a location-based emoji status app. You pin expressive emoji statuses to real-world locations on a map, see what others nearby are posting, and compete on leaderboards for the most-liked status.',
+  },
+  {
+    q: 'Is Pinmoji free?',
+    a: 'Yes! The core experience is completely free. You can post statuses, like others\' posts, discover nearby activity, and access leaderboards without paying anything. Premium tiers unlock extras like the full emoji library, map flair, and extended history.',
+  },
+  {
+    q: 'What do the paid tiers include?',
+    a: 'Pinmoji offers four lifetime tiers — Bronze ($0.99), Silver ($1.99), Gold ($3.99), and Diamond ($9.99). Each unlocks progressively more features like the full emoji library with skin tones, calendar export, map flair effects, and extended status history. All purchases are one-time — no subscriptions.',
+  },
+  {
+    q: 'How long do statuses last?',
+    a: 'Statuses expire after 1–7 days. Once they expire, they disappear from the map, keeping the experience fresh and ephemeral.',
+  },
+  {
+    q: 'How does Pinmoji protect my privacy?',
+    a: 'Your exact location is never stored. We use server-side location fuzzing to reduce precision to approximately 11 meters. The app only accesses your location "When In Use" — never in the background. You can also enable approximate location mode for an additional ~500m privacy layer.',
+  },
+  {
+    q: 'What are badges?',
+    a: 'Pinmoji has 12 achievement badges across three categories: posting streaks (7, 30, 90, 365 consecutive days), statuses posted (5, 25, 100, 500 total), and likes given (10, 50, 200, 1000 total). Each category has Bronze, Silver, Gold, and Diamond tiers.',
+  },
+  {
+    q: 'How do leaderboards work?',
+    a: 'Leaderboards rank the most-liked active statuses in your area across three time windows: hourly, daily, and weekly. They reset with each period, so everyone gets a fresh shot at the top.',
+  },
+  {
+    q: 'Can I use Pinmoji without creating an account?',
+    a: 'Yes. Guest mode lets you try Pinmoji with a local-only experience. You can upgrade to a full account anytime with Sign in with Apple or email, and your data will be migrated.',
+  },
+  {
+    q: 'How do I delete my account?',
+    a: 'You can delete your account from Settings within the app. After a 30-day grace period for recovery, all your data is permanently deleted from our servers.',
+  },
+  {
+    q: 'What platforms is Pinmoji available on?',
+    a: 'Pinmoji is currently available on iOS (iPhone) and requires iOS 17 or later.',
+  },
+];
+---
+
+<section id="faq" class="py-24">
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        Frequently asked <span class="gradient-text">questions</span>
+      </h2>
+    </div>
+
+    <div class="divide-y divide-gray-200 dark:divide-gray-800">
+      {items.map(item => (
+        <details class="group">
+          <summary class="flex justify-between items-center py-5 cursor-pointer font-medium text-left">
+            <span>{item.q}</span>
+            <svg class="w-5 h-5 text-gray-400 shrink-0 ml-4 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="pb-5 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            <p>{item.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

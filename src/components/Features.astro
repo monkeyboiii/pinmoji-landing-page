@@ -1,0 +1,53 @@
+---
+import FeatureCard from './FeatureCard.astro';
+
+const features = [
+  {
+    emoji: '📍',
+    title: 'Pin Your Mood',
+    description: 'Drop emoji statuses at your real-world location. Express how you feel, what you\'re doing, or what\'s happening around you.',
+  },
+  {
+    emoji: '⏳',
+    title: 'Ephemeral by Design',
+    description: 'Statuses expire after 1\u20137 days. Every day the map refreshes with new energy. No permanent digital footprint.',
+  },
+  {
+    emoji: '🏆',
+    title: 'Climb the Leaderboard',
+    description: 'Compete for the most-liked status hourly, daily, and weekly. Rise to the top of your neighborhood.',
+  },
+  {
+    emoji: '🌍',
+    title: 'Discover Nearby',
+    description: 'See what people around you are posting in real-time. Find the vibe before you get there.',
+  },
+  {
+    emoji: '🛡️',
+    title: 'Privacy First',
+    description: 'Your exact location is never stored. Built-in location fuzzing, approximate mode, and \u201CWhen In Use\u201D only permissions.',
+  },
+  {
+    emoji: '🏅',
+    title: 'Earn Badges',
+    description: 'Unlock 12 achievement badges across streaks, statuses posted, and likes given. Show off your dedication.',
+  },
+];
+---
+
+<section id="features" class="py-24">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        Everything you need to <span class="gradient-text">own the map</span>
+      </h2>
+      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Express yourself, compete with friends, and discover what's happening around you — all from a single, beautifully simple app.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {features.map(f => <FeatureCard {...f} />)}
+    </div>
+  </div>
+</section>

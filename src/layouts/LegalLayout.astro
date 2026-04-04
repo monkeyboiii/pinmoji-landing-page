@@ -1,0 +1,23 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  lastUpdated: string;
+}
+
+const { title, lastUpdated } = Astro.props;
+---
+
+<BaseLayout title={`${title} — Pinmoji`} description={title}>
+  <div class="max-w-3xl mx-auto px-4 py-20">
+    <a href="/" class="inline-flex items-center gap-1 text-sm text-pin-500 hover:text-pin-600 dark:text-pin-400 dark:hover:text-pin-300 mb-8">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      Back to home
+    </a>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mb-8">Last updated: {lastUpdated}</p>
+    <article class="prose prose-gray dark:prose-invert max-w-none prose-headings:font-semibold prose-a:text-pin-500 dark:prose-a:text-pin-400">
+      <slot />
+    </article>
+  </div>
+</BaseLayout>

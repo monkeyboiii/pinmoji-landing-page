@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import AppStoreBadge from '../components/AppStoreBadge.astro';
+---
+
+<BaseLayout title="Pinmoji — Drop your emoji. Own the map.">
+  <Hero />
+  <Features />
+  <Pricing />
+  <FAQ />
+
+  <!-- Final CTA -->
+  <section class="py-24 text-center">
+    <div class="max-w-2xl mx-auto px-4">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        Ready to drop your first emoji?
+      </h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-8">
+        Join the map. It's free.
+      </p>
+      <AppStoreBadge class="mx-auto" />
+    </div>
+  </section>
+</BaseLayout>
