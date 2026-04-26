@@ -47,7 +47,8 @@ We do **not** use your information to:
 
 ## Data Retention
 
-- **Statuses** are automatically deleted from our servers when they expire (1–7 days after creation). A background job permanently removes expired data within minutes of expiration.
+{/* App-source reference: https://github.com/monkeyboiii/Pinmoji/blob/main/iOS/Pinmoji/Models/Status/StatusExpiry.swift */}
+- **Statuses** are automatically deleted from our servers when they expire (after 1, 2, 4, 8, or 12 hours, or after 1 day). A background job permanently removes expired data within minutes of expiration.
 - **Status History** is retained based on your subscription tier (40-day to unlimited retention) for your personal viewing. Expired statuses are no longer visible to other users.
 - **Account Data** is retained while your account is active. Upon account deletion, we initiate a 30-day grace period. After this period, all personal data is permanently deleted.
 - **Moderation Reports** are retained for 90 days after resolution.

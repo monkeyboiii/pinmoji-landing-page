@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://pinmoji.app/sitemap-index.xml

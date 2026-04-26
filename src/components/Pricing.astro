@@ -1,4 +1,7 @@
 ---
+// App-source references:
+// https://github.com/monkeyboiii/Pinmoji/blob/main/iOS/Pinmoji/Views/PaywallView.swift
+// https://github.com/monkeyboiii/Pinmoji/blob/main/iOS/Pinmoji/Models/SubscriptionTier.swift
 const tiers = [
   {
     name: 'Free',
@@ -10,56 +13,67 @@ const tiers = [
       'Like & discover nearby',
       'Leaderboard access',
       'Basic badges',
+      '3 chats · 50 messages each',
+      '80-day status history',
     ],
     highlighted: false,
   },
   {
     name: 'Bronze',
     price: '$0.99',
+    originalPrice: '$1.99',
     badge: '🥉',
     tagline: 'Get started',
     features: [
-      'Full emoji library',
-      'Skin tone picker',
+      'Full emoji library + skin tones',
+      'Pinmoji flair on the map',
+      '10 chats · 200 messages each',
+      'Status expiry rounds to the half-hour',
       '200-day history',
-      'All Free features',
     ],
     highlighted: false,
   },
   {
     name: 'Silver',
     price: '$1.99',
+    originalPrice: '$3.99',
     badge: '🥈',
     tagline: 'Most popular',
     features: [
-      'Calendar export',
-      '1-year history',
-      'All Bronze features',
+      'Everything in Bronze',
+      'Calendar export — no watermark',
+      '25 chats · 500 messages each',
+      'Status expiry rounds to the hour',
+      '385-day history',
     ],
     highlighted: true,
   },
   {
     name: 'Gold',
     price: '$3.99',
+    originalPrice: '$5.99',
     badge: '🥇',
     tagline: 'Best value',
     features: [
-      'Pinmoji flair on map',
-      '3-year history',
-      'All Silver features',
+      'Everything in Silver',
+      '1-day courtesy before 8am',
+      '50 chats · 1,000 messages each',
+      '3+ years of history',
     ],
     highlighted: false,
   },
   {
     name: 'Diamond',
     price: '$9.99',
+    originalPrice: '$14.99',
     badge: '💎',
     tagline: 'All access',
     features: [
-      'All current & future features',
+      'Everything in Gold',
+      '1-day courtesy before 10am',
+      '100 chats · 2,000 messages each',
+      'Lifetime status history',
       'First access to new features',
-      'Unlimited history',
-      'All Gold features',
     ],
     highlighted: false,
   },
@@ -99,6 +113,7 @@ const tiers = [
 
           <div class="mb-6">
             <span class="text-3xl font-extrabold">{tier.price}</span>
+            {tier.originalPrice && <span class="text-sm text-gray-400 dark:text-gray-500 ml-1 line-through">{tier.originalPrice}</span>}
             {tier.price !== '$0' && <span class="text-sm text-gray-500 dark:text-gray-400 ml-1">lifetime</span>}
           </div>
 

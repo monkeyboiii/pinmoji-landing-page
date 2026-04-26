@@ -20,10 +20,10 @@ Marketing site and legal pages for the Pinmoji iOS app.
 ## Development
 
 ```bash
-npm install
-npm run dev       # http://localhost:4321
-npm run build     # static output in dist/
-npm run preview   # preview production build
+pnpm install
+pnpm run dev       # http://localhost:4321
+pnpm run build     # static output in dist/
+pnpm run preview   # preview production build
 ```
 
 ## Deploy
@@ -37,6 +37,11 @@ Connected to Cloudflare Pages via GitHub. Pushes to `main` trigger automatic dep
 | Build command | `npm run build` |
 | Output directory | `dist` |
 | Node version | 20 |
+
+## TODO
+
+- Replace placeholder App Store IDs (`app-id=000000000`) with the real Pinmoji Apple Store ID once it is available.
+- Replace `href="#"` App Store links with the real Pinmoji App Store URL once deployed.
 
 ## Project Structure
 
