@@ -1,9 +1,9 @@
 ---
 import LegalLayout from '../layouts/LegalLayout.astro';
-import { getEntry } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 
 const entry = await getEntry('legal', 'terms');
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <LegalLayout title={entry.data.title} lastUpdated={entry.data.lastUpdated}>
