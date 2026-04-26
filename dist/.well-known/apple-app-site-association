@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["FWD52AY66W.com.pinmoji.app"],
+        "components": [
+          { "/": "/s", "?": { "id": "*" }, "comment": "Status share" },
+          { "/": "/m", "?": { "lat": "*", "lng": "*" }, "comment": "Map share" }
+        ]
+      }
+    ]
+  }
+}

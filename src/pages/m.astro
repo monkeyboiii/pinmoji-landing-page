@@ -1,0 +1,77 @@
+---
+// Share bounce page: https://pinmoji.app/m?lat=<lat>&lng=<lng>[&zoom=<z>]
+//
+// Universal Link target for sharing a map region. See `s.astro` for the
+// fallback rationale and the v1.1 SSR plan for richer per-link OG.
+
+import '../styles/global.css';
+
+const title = 'A Pinmoji map area';
+const description = "Open this map area in Pinmoji — see who's pinned what nearby.";
+const ogImage = new URL('/PinmojiApp.jpg', Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="apple-itunes-app" content="app-id=000000000" />
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>" />
+  </head>
+  <body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans antialiased">
+    <main class="min-h-screen flex items-center justify-center px-4">
+      <div class="max-w-md w-full text-center space-y-6">
+        <div class="text-6xl">🗺️</div>
+        <h1 class="text-2xl font-bold">Open this Pinmoji map area</h1>
+        <p class="text-gray-600 dark:text-gray-400">
+          Open in the Pinmoji app to see what's pinned around this spot.
+        </p>
+        <div class="flex flex-col gap-3 pt-2">
+          <a
+            id="open-app"
+            href="#"
+            class="inline-flex justify-center items-center px-6 py-3 rounded-full bg-black text-white font-semibold hover:opacity-90"
+          >
+            Open in Pinmoji
+          </a>
+          <a
+            href="/"
+            class="inline-flex justify-center items-center px-6 py-3 text-gray-700 dark:text-gray-300 underline"
+          >
+            Get the app
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <script is:inline>
+      (function () {
+        const params = new URLSearchParams(location.search);
+        const lat = params.get('lat');
+        const lng = params.get('lng');
+        const zoom = params.get('zoom');
+        if (!lat || !lng) return;
+        const appParams = new URLSearchParams({ lat, lng });
+        if (zoom) appParams.set('zoom', zoom);
+        const appURL = 'pinmoji://map?' + appParams.toString();
+        const button = document.getElementById('open-app');
+        if (button) button.setAttribute('href', appURL);
+      })();
+    </script>
+  </body>
+</html>

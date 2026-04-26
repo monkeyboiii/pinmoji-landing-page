@@ -1,0 +1,81 @@
+---
+// Share bounce page: https://pinmoji.app/s?id=<status-id>
+//
+// Universal Link target — when the Pinmoji iOS app is installed and the AASA
+// match succeeds, iOS opens the app directly and this page never renders.
+// If the app isn't installed (or AASA hasn't been re-fetched yet), we render
+// OG meta for iMessage / social previews and offer install / open buttons.
+//
+// OG meta is generic for v1 (Astro is `output: 'static'` so we can't fetch
+// the status's emoji + text at request time). Per-status OG is a v1.1 task
+// that requires switching to SSR + a public Supabase RPC.
+
+import '../styles/global.css';
+
+const title = 'A Pinmoji status';
+const description = 'Open this Pinmoji status — see the emoji someone pinned to the map.';
+const ogImage = new URL('/PinmojiApp.jpg', Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Smart App Banner. App Store ID is a placeholder until the app ships;
+         update both the AppStoreBadge component and this meta in lockstep. -->
+    <meta name="apple-itunes-app" content="app-id=000000000" />
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>" />
+  </head>
+  <body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans antialiased">
+    <main class="min-h-screen flex items-center justify-center px-4">
+      <div class="max-w-md w-full text-center space-y-6">
+        <div class="text-6xl">📍</div>
+        <h1 class="text-2xl font-bold">Open this Pinmoji status</h1>
+        <p class="text-gray-600 dark:text-gray-400">
+          Open in the Pinmoji app to see the emoji and where it was pinned.
+        </p>
+        <div class="flex flex-col gap-3 pt-2">
+          <a
+            id="open-app"
+            href="#"
+            class="inline-flex justify-center items-center px-6 py-3 rounded-full bg-black text-white font-semibold hover:opacity-90"
+          >
+            Open in Pinmoji
+          </a>
+          <a
+            href="/"
+            class="inline-flex justify-center items-center px-6 py-3 text-gray-700 dark:text-gray-300 underline"
+          >
+            Get the app
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <script is:inline>
+      (function () {
+        const params = new URLSearchParams(location.search);
+        const id = params.get('id');
+        if (!id) return;
+        const appURL = 'pinmoji://map/status?id=' + encodeURIComponent(id);
+        const button = document.getElementById('open-app');
+        if (button) button.setAttribute('href', appURL);
+      })();
+    </script>
+  </body>
+</html>
