@@ -3,3 +3,5 @@ dist/
 
 .astro
 .astro/*
+
+.DS_Store

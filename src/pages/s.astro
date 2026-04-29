@@ -14,7 +14,8 @@ import '../styles/global.css';
 
 const title = 'A Pinmoji status';
 const description = 'Open this Pinmoji status — see the emoji someone pinned to the map.';
-const ogImage = new URL('/PinmojiApp.jpg', Astro.site);
+const ogImage = new URL('/og/share.jpg', Astro.site);
+const appStoreUrl = 'https://apps.apple.com/us/app/pinmoji-emoji-map-pins/id6761286147';
 ---
 
 <!doctype html>
@@ -30,14 +31,16 @@ const ogImage = new URL('/PinmojiApp.jpg', Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:image:width" content="256" />
+    <meta property="og:image:height" content="256" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- Smart App Banner. App Store ID is a placeholder until the app ships;
-         update both the AppStoreBadge component and this meta in lockstep. -->
-    <meta name="apple-itunes-app" content="app-id=000000000" />
+    <!-- Smart App Banner. Keep this ID in lockstep with the AppStoreBadge URL. -->
+    <meta name="apple-itunes-app" content="app-id=6761286147" />
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>" />
   </head>
@@ -52,7 +55,7 @@ const ogImage = new URL('/PinmojiApp.jpg', Astro.site);
         <div class="flex flex-col gap-3 pt-2">
           <a
             id="open-app"
-            href="#"
+            href={appStoreUrl}
             class="inline-flex justify-center items-center px-6 py-3 rounded-full bg-black text-white font-semibold hover:opacity-90"
           >
             Open in Pinmoji

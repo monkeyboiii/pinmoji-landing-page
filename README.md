@@ -38,11 +38,6 @@ Connected to Cloudflare Pages via GitHub. Pushes to `main` trigger automatic dep
 | Output directory | `dist` |
 | Node version | 20 |
 
-## TODO
-
-- Replace placeholder App Store IDs (`app-id=000000000`) with the real Pinmoji Apple Store ID once it is available.
-- Replace `href="#"` App Store links with the real Pinmoji App Store URL once deployed.
-
 ## Project Structure
 
 ```

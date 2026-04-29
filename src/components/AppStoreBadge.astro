@@ -4,10 +4,11 @@ interface Props {
 }
 
 const { class: className = '' } = Astro.props;
+const appStoreUrl = 'https://apps.apple.com/us/app/pinmoji-emoji-map-pins/id6761286147';
 ---
 
 <a
-  href="#"
+  href={appStoreUrl}
   class:list={['inline-block transition-opacity hover:opacity-80', className]}
   aria-label="Download on the App Store"
 >
