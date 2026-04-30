@@ -1,14 +1,20 @@
 ---
-// Share bounce page: https://pinmoji.app/m?lat=<lat>&lng=<lng>[&zoom=<z>]
+// Share bounce page: https://pinmoji.app/m?lat=<lat>&lng=<lng>[&zoom=<z>][&t=<title>]
 //
 // Universal Link target for sharing a map region. See `s.astro` for the
-// fallback rationale and the v1.1 SSR plan for richer per-link OG.
+// fallback rationale and the SSR-via-URL-params design.
+
+export const prerender = false;
 
 import '../styles/global.css';
 
-const title = 'A Pinmoji map area';
+const params = Astro.url.searchParams;
+const titleRaw = (params.get('t') ?? '').trim();
+const title = titleRaw ? titleRaw.slice(0, 140) : 'A Pinmoji map area';
 const description = "Open this map area in Pinmoji — see who's pinned what nearby.";
-const ogImage = new URL('/og/share.jpg', Astro.site);
+// Per-coordinate dynamic image is a future task — keep the static map glyph
+// for now so map-area shares still get a recognizable card.
+const ogImage = new URL('/og/share.jpg', Astro.site).toString();
 const appStoreUrl = 'https://apps.apple.com/us/app/pinmoji-emoji-map-pins/id6761286147';
 ---
 
@@ -33,6 +39,8 @@ const appStoreUrl = 'https://apps.apple.com/us/app/pinmoji-emoji-map-pins/id6761
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <link rel="apple-touch-icon" href={ogImage} />
+
     <meta name="apple-itunes-app" content="app-id=6761286147" />
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>" />
@@ -41,7 +49,7 @@ const appStoreUrl = 'https://apps.apple.com/us/app/pinmoji-emoji-map-pins/id6761
     <main class="min-h-screen flex items-center justify-center px-4">
       <div class="max-w-md w-full text-center space-y-6">
         <div class="text-6xl">🗺️</div>
-        <h1 class="text-2xl font-bold">Open this Pinmoji map area</h1>
+        <h1 class="text-2xl font-bold">{title}</h1>
         <p class="text-gray-600 dark:text-gray-400">
           Open in the Pinmoji app to see what's pinned around this spot.
         </p>
