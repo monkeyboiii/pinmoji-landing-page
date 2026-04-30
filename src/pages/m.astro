@@ -12,9 +12,12 @@ const params = Astro.url.searchParams;
 const titleRaw = (params.get('t') ?? '').trim();
 const title = titleRaw ? titleRaw.slice(0, 140) : 'A Pinmoji map area';
 const description = "Open this map area in Pinmoji — see who's pinned what nearby.";
-// Per-coordinate dynamic image is a future task — keep the static map glyph
-// for now so map-area shares still get a recognizable card.
-const ogImage = new URL('/og/share.jpg', Astro.site).toString();
+// Use the small (72×72) world-map emoji PNG instead of the 256×256 share.jpg.
+// iMessage's LinkPresentation renders this as a compact card (small left
+// thumbnail + title to the right) instead of the giant square hero card it
+// produces from a larger image. Same compact treatment as `/s` status shares.
+// Per-coordinate dynamic image (rendered map snapshot) remains a future task.
+const ogImage = new URL('/emojis/world_map.png', Astro.url.origin).toString();
 const appStoreUrl = 'https://apps.apple.com/us/app/pinmoji-emoji-map-pins/id6761286147';
 ---
 
@@ -33,7 +36,7 @@ const appStoreUrl = 'https://apps.apple.com/us/app/pinmoji-emoji-map-pins/id6761
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="256" />
     <meta property="og:image:height" content="256" />
-    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:type" content="image/png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
